@@ -1,0 +1,3 @@
+com\tutorials\csvflat\bean\CSVtoFixedProcessor.class
+com\tutorials\csvflat\bean\OrderBean.class
+com\tutorials\csvflat\fixed\bean\OrderBenFixed.class

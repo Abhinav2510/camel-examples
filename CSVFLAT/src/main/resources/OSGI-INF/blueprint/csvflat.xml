@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+             http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+             http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+		<bean id="fixedLenght" class="com.tutorials.csvflat.bean.CSVtoFixedProcessor"/>
+
+	<camelContext xmlns="http://camel.apache.org/schema/blueprint"
+		xmlns:order="http://fabric8.com/examples/order/v7" id="CSVtoFlat-example">
+		<dataFormats>
+			<bindy id="bindyDataFormat" type="Csv" classType="com.tutorials.csvflat.bean.OrderBean"/>
+			<bindy id="bindyDataFormat2" type="Fixed" classType="com.tutorials.csvflat.fixed.bean.OrderBenFixed"/>
+		</dataFormats>
+		<route id="csvflat-example-route">
+			<from uri="file:///C:/Fuse/work/csvflat/input" />
+			<log message="${in.body}"/>
+			<unmarshal ref="bindyDataFormat"/>
+			 <process ref="fixedLenght"/>
+            <to uri="direct:test" />
+			
+		</route>
+		
+        <route>
+            <from uri="direct:test" />
+            <log message="${in.body}"/>
+            <marshal ref="bindyDataFormat2" />
+			<log message="${in.body}"/>
+			<to uri="file:///C:/Fuse/work/csvflat/output" />
+        </route>
+
+	</camelContext>
+
+</blueprint>

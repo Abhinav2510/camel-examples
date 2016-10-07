@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1475550127107
+Build-Jdk: 1.8.0_91
+Built-By: Shelke Nitin
+Bundle-Description: Camel Splitter Example
+Bundle-ManifestVersion: 2
+Bundle-Name: JBoss Fuse Training Splitter example
+Bundle-SymbolicName: com.tutorials.splitter
+Bundle-Version: 1.0.6
+Created-By: Apache Maven Bundle Plugin
+Import-Package: org.osgi.service.blueprint;version="[1.0.0,2.0.0)"
+Tool: Bnd-1.50.0

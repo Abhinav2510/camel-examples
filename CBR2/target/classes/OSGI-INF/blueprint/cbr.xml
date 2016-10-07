@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+             http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+             http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" xmlns:order="http://fabric8.com/examples/order/v7"
+        id="cbr-example-context">
+
+        <route id="cbr-route">
+            <from uri="file:///c:/Fuse/work/cbr/input" />
+            <log message="Receiving order ${file:name}" />
+            <choice>
+                <when>
+                    <xpath>/order:order/order:customer/order:country = 'UK'</xpath>
+                    <log message="Sending order ${file:name} to the UK" />
+                    <to uri="file:///c:/Fuse/work/cbr/output/uk" />
+                </when>
+                <when>
+                    <xpath>/order:order/order:customer/order:country = 'US'</xpath>
+                    <log message="Sending order ${file:name} to the US" />
+                    <to uri="file:///c:/Fuse/work/cbr/output/us" />
+                </when>
+                <otherwise>
+                    <log message="Sending order ${file:name} to another country" />
+                    <to uri="file:///c:/Fuse/work/cbr/output/others" />
+                </otherwise>
+            </choice>
+            <log message="Done processing ${file:name}" />
+        </route>
+    </camelContext>
+
+</blueprint>
