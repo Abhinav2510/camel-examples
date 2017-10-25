@@ -4,7 +4,7 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 import org.apache.camel.dataformat.bindy.annotation.FixedLengthRecord;
 
 @FixedLengthRecord(length = 100, paddingChar = ' ')
-public class OrderBenFixed {
+public class OrderBeanFixed {
 
 	@DataField(pos = 1, length = 7)
 	int orderId;

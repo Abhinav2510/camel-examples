@@ -4,7 +4,7 @@ import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
 @CsvRecord(separator = ",")
-public class OrderBean {
+public class OrderBeanCsv {
 
 	@DataField(pos = 1)
 	int orderId;

@@ -4,11 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<!-- Fuse version -->
-	<parent>
-		<groupId>com.training</groupId>
-		<artifactId>camel</artifactId>
-		<version>1.0.0</version>
-	</parent>
+
 
 	<groupId>com.tutorials</groupId>
 	<artifactId>csvflat</artifactId>
@@ -67,7 +63,7 @@
 
 
 		<!-- the version of the JBoss Fuse BOM, defining all the dependency versions -->
-		<jboss.fuse.bom.version>6.2.1.redhat-084</jboss.fuse.bom.version>
+		<jboss.fuse.bom.version>6.2.1.redhat-090</jboss.fuse.bom.version>
 	</properties>
 
 	<dependencyManagement>
